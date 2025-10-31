@@ -1,23 +1,3 @@
-// export default function Navigation() {
-//   return (
-//     <nav className="relative z-20 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
-//       <div className="flex items-center gap-2">
-//         <img src="/logo.png" alt="Uplift Advertising" className="h-12" />
-//       </div>
-
-//       <div className="hidden md:flex items-center gap-8">
-//         <a href="#" className="text-sm hover:text-gray-300 transition-colors">Home</a>
-//         <a href="#" className="text-sm hover:text-gray-300 transition-colors">About Us</a>
-//         <a href="#" className="text-sm hover:text-gray-300 transition-colors">Services & Packages</a>
-//         <a href="#" className="text-sm hover:text-gray-300 transition-colors">Our Work</a>
-//         <a href="#" className="text-sm hover:text-gray-300 transition-colors">Contact Us</a>
-//         <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-md text-sm font-medium transition-colors">
-//           Let's Work Together
-//         </button>
-//       </div>
-//     </nav>
-//   );
-// }
 import { useState, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -55,7 +35,8 @@ export default function Navigation() {
   }, [isOpen]);
 
   return (
-    <nav className="relative z-20 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+    // UPDATED: Changed max-w-7xl to max-w-screen-xl to widen the container
+    <nav className="relative z-20 flex items-center justify-between px-8 py-6 max-w-screen-xl mx-auto">
       {/* Logo Area (Left) */}
       <div className="flex items-center gap-2">
         <a href="#home" onClick={(e) => handleNavClick(e, '#home')}>
@@ -77,7 +58,7 @@ export default function Navigation() {
         ))}
         <button 
           onClick={(e) => handleNavClick(e, '#contact')}
-          className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-md text-sm font-medium transition-colors shadow-lg shadow-blue-500/30"
+          className="bg-indigo-600 hover:bg-indigo-700 px-6 py-2 rounded-md text-sm font-medium transition-colors shadow-lg shadow-indigo-500/30"
         >
           Let's Work Together
         </button>
@@ -104,14 +85,14 @@ export default function Navigation() {
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="text-xl font-medium text-white hover:text-blue-400 transition-colors"
+              className="text-xl font-medium text-white hover:text-indigo-400 transition-colors"
             >
               {item.name}
             </a>
           ))}
           <button 
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="mt-8 bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-md text-lg font-medium transition-colors shadow-xl shadow-blue-500/40"
+            className="mt-8 bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-md text-lg font-medium transition-colors shadow-xl shadow-indigo-500/40"
           >
             Let's Work Together
           </button>

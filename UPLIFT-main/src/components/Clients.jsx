@@ -46,7 +46,7 @@ export default function Clients() {
           {clients.map((client) => (
             <div
               key={client.name}
-              className="bg-gray-900/50 border border-white/10 rounded-lg p-6 text-center space-y-3 flex flex-col items-center justify-center transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-800/60"
+              className="bg-gray-900/50 border border-white/10 rounded-lg p-6 text-center space-y-3 flex flex-col items-center justify-center transition-all duration-300 hover:border-indigo-500/50 hover:bg-gray-800/60"
             >
               <div className="flex items-center gap-1 text-yellow-400">
                 <Star className="w-4 h-4 fill-yellow-400" />

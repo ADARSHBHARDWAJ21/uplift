@@ -31,10 +31,9 @@ function App() {
         <KeyBenefits id="benefits" />
         <WhyContent id="about" />
         <Testimonials id="testimonials" />
-        <Clients />
+  
         <Faq id="faq" />
         <Cta />
-        <ContactForm />
         <Footer />
       </div>
     </div>

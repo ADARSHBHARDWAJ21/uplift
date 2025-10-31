@@ -4,37 +4,43 @@ import { Target, Filter, Users, DollarSign, Brain, Award } from 'lucide-react';
 // Marketing-focused benefits
 const benefits = [
   {
-    icon: <Target className="w-8 h-8 text-blue-400" />,
+    // UPDATED: Icon color changed to text-white
+    icon: <Target className="w-8 h-8 text-white" />,
     title: 'Wider Brand Reach',
     description:
       'Reach a larger, more targeted audience across multiple platforms, building significant brand awareness and recognition.',
   },
   {
-    icon: <Filter className="w-8 h-8 text-blue-400" />,
+    // UPDATED: Icon color changed to text-white
+    icon: <Filter className="w-8 h-8 text-white" />,
     title: 'Quality Lead Generation',
     description:
       'Attract and capture high-quality leads that are more likely to convert into paying customers for your business.',
   },
   {
-    icon: <Users className="w-8 h-8 text-blue-400" />,
+    // UPDATED: Icon color changed to text-white
+    icon: <Users className="w-8 h-8 text-white" />,
     title: 'Stronger Community',
     description:
       'Foster a loyal community around your brand, driving engagement, user-generated content, and long-term customer loyalty.',
   },
   {
-    icon: <DollarSign className="w-8 h-8 text-blue-400" />,
+    // UPDATED: Icon color changed to text-white
+    icon: <DollarSign className="w-8 h-8 text-white" />,
     title: 'Cost-Effective Strategy',
     description:
       'Digital marketing often provides a higher ROI than traditional methods, allowing for precise budgeting and measurable results.',
   },
   {
-    icon: <Brain className="w-8 h-8 text-blue-400" />,
+    // UPDATED: Icon color changed to text-white
+    icon: <Brain className="w-8 h-8 text-white" />,
     title: 'Data-Driven Insights',
     description:
       'Gain valuable insights from analytics to understand your audience, refine your strategy, and make smarter business decisions.',
   },
   {
-    icon: <Award className="w-8 h-8 text-blue-400" />,
+    // UPDATED: Icon color changed to text-white
+    icon: <Award className="w-8 h-8 text-white" />,
     title: 'Build Authority & Trust',
     description:
       'Establish your brand as an industry leader and a trusted authority, making customers feel more confident choosing you.',
@@ -46,7 +52,7 @@ export default function KeyBenefits({ id }) {
     <section id={id} className="py-32">
       <div className="max-w-7xl mx-auto px-8 text-center">
         {/* Badge from the image */}
-        <span className="inline-block px-4 py-1 mb-6 text-sm font-medium text-blue-300 bg-blue-900/30 rounded-full">
+        <span className="inline-block px-4 py-1 mb-6 text-sm font-medium text-indigo-300 bg-indigo-900/30 rounded-full">
           Benefits
         </span>
         
@@ -64,15 +70,25 @@ export default function KeyBenefits({ id }) {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              // Re-using the card style from your ServicesOverview component
-              className="bg-gray-900/50 border border-white/10 rounded-lg p-8 text-left space-y-4"
+              className="relative overflow-hidden bg-black border border-white/10 rounded-lg p-8 text-left"
             >
-              {/* Re-using the icon style */}
-              <div className="p-3 bg-blue-900/30 w-fit rounded-lg">
-                {benefit.icon}
+              {/* Violet glow effect from bottom center */}
+              <div 
+                className="absolute inset-0" 
+                style={{ 
+                  background: 'radial-gradient(ellipse at bottom center, rgba(126, 34, 206, 0.2) 0%, transparent 70%)' 
+                }}
+              ></div>
+
+              {/* Content container stacked on top */}
+              <div className="relative z-10 space-y-4">
+                {/* Re-using the icon style */}
+                <div className="p-3 bg-indigo-900/30 w-fit rounded-lg">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white">{benefit.title}</h3>
+                <p className="text-gray-300">{benefit.description}</p>
               </div>
-              <h3 className="text-xl font-bold">{benefit.title}</h3>
-              <p className="text-gray-400">{benefit.description}</p>
             </div>
           ))}
         </div>

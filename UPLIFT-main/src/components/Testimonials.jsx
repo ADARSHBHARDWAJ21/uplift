@@ -1,37 +1,38 @@
 /* eslint-disable react/prop-types */
 import { Star } from 'lucide-react';
 
-// Testimonials focused on marketing results
+// UPDATED: Testimonials now use your client data
 const testimonials = [
   {
     quote:
-      "Uplift transformed our social media presence. Our engagement has skyrocketed, and our workflow has never been easier. Scaling our brand felt effortless with them.",
-    name: 'James Carter',
-    title: 'CEO at TechFlow Solutions',
-    avatarUrl: 'https://fakeimg.pl/100x100/3B82F6/FFFFFF?text=JC&font=montserrat',
+      "7M+ views and 5,000+ organic leads... the results from Uplift are just insane. They transformed our finance content into viral clips.",
+    name: 'Tradex Markets',
+    title: 'Finance Education Client',
+    avatarUrl: 'https://source.unsplash.com/100x100/?portrait,man,finance',
   },
   {
     quote:
-      "With Uplift's ad campaigns, we cut our lead cost and improved quality. Our team now focuses on high-impact tasks while their automation handles the rest!",
-    name: 'Sophia Martinez',
-    title: 'Operations Manager at NexaCorp',
-    avatarUrl: 'https://fakeimg.pl/100x100/6366F1/FFFFFF?text=SM&font=montserrat',
+      "They grew my follower count from 4k to over 12.6k in just one month! My personal brand authority has never been stronger.",
+    name: 'Vihana Arya',
+    title: 'Personal Brand Client',
+    avatarUrl: 'https://source.unsplash.com/100x100/?portrait,woman,fashion',
   },
   {
     quote:
-      'Their data-driven insights doubled our sales efficiency. We now engage leads at the right time with smarter, data-backed decisions!',
-    name: 'David Reynolds',
-    title: 'Head of Sales at GrowthPeak',
-    avatarUrl: 'https://fakeimg.pl/100x100/1E40AF/FFFFFF?text=DR&font=montserrat',
+      'Working with Uplift was a game-changer. Their content strategy took our social engagement to a new level and built a real community.',
+    name: 'Jhumaa Dutta',
+    title: 'Online Coach',
+    avatarUrl: 'https://source.unsplash.com/100x100/?portrait,woman,professional',
   },
   {
     quote:
-      "Our content is now seamless. Our video views are up 300%, and satisfaction is at an all-time high, thanks to Uplift's creative team.",
-    name: 'Emily Wong',
-    title: 'Customer Success Lead at SupportHive',
-    avatarUrl: 'https://fakeimg.pl/100x100/4F46E5/FFFFFF?text=EW&font=montserrat',
+      "The web development team delivered a sleek, fast, and professional website that perfectly captures our brand. Highly recommend!",
+    name: 'Manoj Adwani',
+    title: 'Business Owner',
+    avatarUrl: 'https://source.unsplash.com/100x100/?portrait,man,business',
   },
 ];
+
 
 export default function Testimonials({ id }) {
   return (
@@ -57,26 +58,37 @@ export default function Testimonials({ id }) {
           {testimonials.map((item) => (
             <div
               key={item.name}
-              className="bg-gray-900/50 border border-white/10 rounded-lg p-8 text-left flex flex-col justify-between"
+              // UPDATED: Switched to bg-black and added relative/overflow-hidden for the glow
+              className="relative overflow-hidden bg-black border border-white/10 rounded-lg p-8 text-left flex flex-col justify-between"
             >
-              <div>
-                {/* 5-Star Rating */}
-                <div className="flex items-center gap-1 text-yellow-400 mb-6">
-                  <Star className="w-5 h-5 fill-yellow-400" />
-                  <Star className="w-5 h-5 fill-yellow-400" />
-                  <Star className="w-5 h-5 fill-yellow-400" />
-                  <Star className="w-5 h-5 fill-yellow-400" />
-                  <Star className="w-5 h-5 fill-yellow-400" />
+              {/* Violet glow effect from bottom right */}
+              <div 
+                className="absolute inset-0" 
+                style={{ 
+                  background: 'radial-gradient(ellipse at bottom right, rgba(126, 34, 206, 0.2) 0%, transparent 70%)' 
+                }}
+              ></div>
+              
+              {/* Top content (stars, quote) */}
+              <div className="relative z-10">
+                {/* 5-Star Rating - UPDATED to white */}
+                <div className="flex items-center gap-1 text-white mb-6">
+                  <Star className="w-5 h-5 fill-white" />
+                  <Star className="w-5 h-5 fill-white" />
+                  <Star className="w-5 h-5 fill-white" />
+                  <Star className="w-5 h-5 fill-white" />
+                  <Star className="w-5 h-5 fill-white" />
                 </div>
                 {/* Quote */}
                 <blockquote className="text-lg text-gray-300 italic">
                   "{item.quote}"
                 </blockquote>
               </div>
-              {/* Author */}
-              <div className="flex items-center gap-4 mt-8">
+              
+              {/* Author (bottom content) */}
+              <div className="relative z-10 flex items-center gap-4 mt-8">
                 <img
-                  src={item.avatarUrl}
+                  src={item.avatarUrl} // UPDATED: Now uses Unsplash
                   alt={item.name}
                   className="w-12 h-12 rounded-full object-cover"
                 />
