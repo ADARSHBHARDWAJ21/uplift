@@ -39,11 +39,13 @@
 
 
 .animate-rotate {
-  animation: rotate 20s linear infinite;
+  /* UPDATED: Sped up from 20s */
+  animation: rotate 15s linear infinite;
 }
 
 .animate-rotate-reverse {
-  animation: rotate-reverse 30s linear infinite;
+  /* UPDATED: Sped up from 30s */
+  animation: rotate-reverse 18s linear infinite;
 }
 
 

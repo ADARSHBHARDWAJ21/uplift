@@ -15,18 +15,30 @@ export default function Hero() {
       <AnimatedRing />
 
       <div className="text-center max-w-5xl mx-auto space-y-8">
-        <div className="border-2 border-indigo-500 rounded-lg p-12 bg-black/50 backdrop-blur-sm">
+        {/* UPDATED: Removed "border-2" and "border-indigo-500" from this div.
+          Kept the padding (p-12), background, and blur.
+        */}
+        <div 
+          className="rounded-lg p-12 bg-black/50 backdrop-blur-sm opacity-0 animate-fade-in-up"
+          style={{ animationDelay: '0.2s' }}
+        >
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 uppercase">
             WE TURN CREATIVITY INTO<br />BUSINESS GROWTH
           </h1>
         </div>
 
-        <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
+        <p 
+          className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto opacity-0 animate-fade-in-up"
+          style={{ animationDelay: '0.4s' }}
+        >
           At Uplift Advertising Agency, we empower businesses of all sizes with
           the tools and strategies needed to thrive online
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <div 
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 opacity-0 animate-fade-in-up"
+          style={{ animationDelay: '0.6s' }}
+        >
           <button 
             // Updated to scroll to contact section
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} 
