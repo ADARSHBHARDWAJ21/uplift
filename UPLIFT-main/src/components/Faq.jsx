@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
+// ... (faqItems array remains the same)
 const faqItems = [
   {
     question: 'How can Uplift Advertising Agency help my business?',
@@ -32,13 +34,19 @@ const faqItems = [
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [elementRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
 
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="py-32">
+    // UPDATED: Changed to 'animate-fade-in'
+    <section 
+      ref={elementRef}
+      className={`py-32 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+    >
+      {/* ... (rest of the component remains the same) ... */}
       <div className="max-w-4xl mx-auto px-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
           We've Got the Answers
@@ -49,10 +57,7 @@ export default function Faq() {
           Quick answers to your digital marketing questions.
         </p>
 
-        {/* FAQ Container with the violet effect */}
         <div className="relative overflow-hidden rounded-lg bg-black p-4 md:p-8 border border-white/10">
-          
-          {/* Violet radial gradient overlay from the middle */}
           <div 
             className="absolute inset-0" 
             style={{ 
@@ -60,7 +65,6 @@ export default function Faq() {
             }}
           ></div>
           
-          {/* Content container to stack on top of the gradient */}
           <div className="relative z-10 space-y-4">
             {faqItems.map((item, index) => (
               <div

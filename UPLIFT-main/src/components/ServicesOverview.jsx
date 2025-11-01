@@ -1,5 +1,7 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { ArrowRight, BarChart3, Bot, Megaphone, MonitorPlay } from 'lucide-react';
 
+// ... (services array remains the same)
 const services = [
   {
     icon: <Megaphone className="w-8 h-8 text-white" />,
@@ -23,40 +25,48 @@ const services = [
   },
 ];
 
+const ServiceCard = ({ service, index }) => {
+  const [elementRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
+  const delay = index * 100;
+
+  return (
+    <div
+      ref={elementRef}
+      // UPDATED: Changed to 'animate-scale-in'
+      className={`relative overflow-hidden bg-black border border-white/10 rounded-lg p-8 text-left ${
+        isVisible ? 'animate-scale-in' : 'opacity-0'
+      }`}
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <div 
+        className="absolute inset-0" 
+        style={{ 
+          background: 'radial-gradient(ellipse at top right, rgba(126, 34, 206, 0.2) 0%, transparent 70%), radial-gradient(ellipse at bottom left, rgba(126, 34, 206, 0.2) 0%, transparent 70%)' 
+        }}
+      ></div>
+      <div className="relative z-10 space-y-4">
+        <div className="p-3 bg-indigo-900/30 w-fit rounded-lg">
+          {service.icon}
+        </div>
+        <h3 className="text-xl font-bold">{service.title}</h3>
+        <p className="text-gray-400">{service.description}</p>
+      </div>
+    </div>
+  );
+};
+
 export default function ServicesOverview({ id }) {
   return (
     <section id={id} className="py-32">
       <div className="max-w-7xl mx-auto px-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-16">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="relative overflow-hidden bg-black border border-white/10 rounded-lg p-8 text-left"
-            >
-              {/* Violet glow effect from top-right and bottom-left */}
-              <div 
-                className="absolute inset-0" 
-                style={{ 
-                  background: 'radial-gradient(ellipse at top right, rgba(126, 34, 206, 0.2) 0%, transparent 70%), radial-gradient(ellipse at bottom left, rgba(126, 34, 206, 0.2) 0%, transparent 70%)' 
-                }}
-              ></div>
-
-              {/* Content container stacked on top */}
-              <div className="relative z-10 space-y-4">
-                <div className="p-3 bg-indigo-900/30 w-fit rounded-lg">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold">{service.title}</h3>
-                <p className="text-gray-400">{service.description}</p>
-              </div>
-            </div>
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
         <button 
-          // Updated to scroll to contact section
           onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} 
-          // UPDATED: Button color changed to violet
           className="group bg-violet-600 hover:bg-violet-700 px-8 py-3 rounded-md font-medium transition-all flex items-center gap-2 mx-auto"
         >
           View All Services

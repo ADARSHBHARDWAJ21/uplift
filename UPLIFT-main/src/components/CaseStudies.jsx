@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-// We'll create case studies based on your Results and Clients components
+// ... (studies array remains the same)
 const studies = [
   {
     client: 'Tradex Markets',
@@ -36,11 +37,14 @@ const studies = [
 ];
 
 export default function CaseStudies({ id }) {
+  const [elementRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
+  
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-
+  
+  // ... (onMouseDown, onMouseLeaveOrUp, onMouseMove functions remain the same)
   const onMouseDown = (e) => {
     setIsDragging(true);
     setStartX(e.pageX - sliderRef.current.offsetLeft);
@@ -60,25 +64,27 @@ export default function CaseStudies({ id }) {
   };
 
   return (
-    <section id={id} className="py-32 bg-black/50 backdrop-blur-sm overflow-hidden">
+    // UPDATED: Changed to 'animate-fade-in'
+    <section 
+      id={id} 
+      ref={elementRef}
+      className={`py-32 bg-black/50 backdrop-blur-sm overflow-hidden ${
+        isVisible ? 'animate-fade-in' : 'opacity-0'
+      }`}
+    >
+      {/* ... (rest of the component remains the same) ... */}
       <div className="max-w-7xl mx-auto px-8 text-center">
-        {/* Badge */}
         <span className="inline-block px-4 py-1 mb-6 text-sm font-medium text-gray-300 bg-gray-800/50 rounded-full border border-white/10">
           Case Studies
         </span>
-        
-        {/* Headline */}
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
           See How Our Strategies Transform Businesses
         </h2>
-        
-        {/* Subtitle */}
         <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-16">
           See how our work streamlines operations, boosts, and drives growth.
         </p>
       </div>
 
-      {/* Slider Container */}
       <div
         className="flex overflow-x-auto cursor-grab active:cursor-grabbing snap-x snap-mandatory"
         ref={sliderRef}
@@ -86,17 +92,14 @@ export default function CaseStudies({ id }) {
         onMouseLeave={onMouseLeaveOrUp}
         onMouseUp={onMouseLeaveOrUp}
         onMouseMove={onMouseMove}
-        // Hide scrollbar
         style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
       >
         {studies.map((study, index) => (
-          // Individual Slide
           <div
             key={index}
             className="flex-shrink-0 w-full max-w-7xl mx-auto px-8 snap-center"
           >
             <div className="flex flex-col md:flex-row gap-12 items-center">
-              {/* Image Column */}
               <div className="w-full md:w-1/2">
                 <img
                   src={study.image}
@@ -104,8 +107,6 @@ export default function CaseStudies({ id }) {
                   className="rounded-lg object-cover w-full h-[400px] shadow-2xl"
                 />
               </div>
-              
-              {/* Content Column */}
               <div className="w-full md:w-1/2 text-left">
                 <img
                   src={study.logo}
@@ -119,7 +120,6 @@ export default function CaseStudies({ id }) {
                 <p className="text-lg text-gray-300 mb-6">
                   {study.description}
                 </p>
-                
                 <h4 className="text-xl font-semibold mb-4">Impact:</h4>
                 <ul className="space-y-2">
                   {study.impact.map((item) => (
@@ -135,7 +135,6 @@ export default function CaseStudies({ id }) {
         ))}
       </div>
 
-      {/* Drag Hint */}
       <div className="flex justify-center items-center gap-4 mt-12 text-gray-500">
         <ArrowLeft className="w-4 h-4" />
         <span className="text-sm font-semibold uppercase tracking-wider">

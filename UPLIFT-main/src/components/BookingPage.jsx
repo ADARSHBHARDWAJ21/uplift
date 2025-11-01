@@ -1,28 +1,38 @@
-// UPDATED: Imported the scroll animation hook
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { Send, Mail, Phone, User } from 'lucide-react';
+/* eslint-disable react/prop-types */
+import { ArrowLeft, Send, Mail, Phone, User } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation'; // Import the hook
 
-export default function ContactForm() {
-  // UPDATED: Added the hook to the main component
+export default function BookingPage({ setIsBookingPageVisible }) {
+  // We can re-use the animation hook for a nice fade-in
   const [elementRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    // UPDATED: Added ref, opacity-0, and conditional animation class
     <section 
-      id="contact" 
       ref={elementRef}
-      className={`py-32 bg-black/50 backdrop-blur-sm ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0'
-      }`}
+      // Use the 'fade-in' animation we defined in tailwind.config.js
+      className={`py-32 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
     >
       <div className="max-w-4xl mx-auto px-8">
+        
+        {/* Back to Homepage Button */}
+        <button
+          onClick={() => setIsBookingPageVisible(false)}
+          className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          Back to Homepage
+        </button>
+
+        {/* Header */}
         <h2 className="text-center text-4xl md:text-5xl font-bold mb-4">
-          Let's Work Together
+          Book Your Free Call
         </h2>
         <p className="text-center text-lg text-gray-400 mb-12">
-          Ready to elevate your brand? Reach out and let's discuss your project.
+          We&apos;re excited to hear about your project. Fill out the form below or
+          use our contact details.
         </p>
 
+        {/* Content (from ContactForm.jsx) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Column 1: Form */}
           <form
@@ -30,17 +40,18 @@ export default function ContactForm() {
             className="space-y-6"
             aria-labelledby="contact-heading"
           >
+            {/* ... (Form content is copied from ContactForm.jsx) ... */}
             <h3 id="contact-heading" className="text-2xl font-semibold mb-6 sr-only">
               Contact Form
             </h3>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="name-booking" className="block text-sm font-medium text-gray-300 mb-2">
                 Full Name
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  id="name"
+                  id="name-booking"
                   name="name"
                   required
                   className="w-full px-4 py-3 bg-gray-900/50 border border-white/10 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all"
@@ -49,15 +60,14 @@ export default function ContactForm() {
                 <User className="w-5 h-5 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
-
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="email-booking" className="block text-sm font-medium text-gray-300 mb-2">
                 Email Address
               </label>
               <div className="relative">
                 <input
                   type="email"
-                  id="email"
+                  id="email-booking"
                   name="email"
                   required
                   className="w-full px-4 py-3 bg-gray-900/50 border border-white/10 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all"
@@ -66,13 +76,12 @@ export default function ContactForm() {
                 <Mail className="w-5 h-5 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
-
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="message-booking" className="block text-sm font-medium text-gray-300 mb-2">
                 Message
               </label>
               <textarea
-                id="message"
+                id="message-booking"
                 name="message"
                 rows="4"
                 required
@@ -80,7 +89,6 @@ export default function ContactForm() {
                 placeholder="How can we help?"
               ></textarea>
             </div>
-
             <button
               type="submit"
               className="group w-full bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-md font-medium transition-all flex items-center justify-center gap-2"
@@ -94,7 +102,7 @@ export default function ContactForm() {
           <div className="space-y-8 pt-4">
             <h3 className="text-2xl font-semibold mb-6">Our Contact Details</h3>
             <p className="text-gray-400">
-              You can also reach us directly through the channels below. We're
+              You can also reach us directly through the channels below. We&apos;re
               always happy to chat!
             </p>
             <ul className="space-y-6 text-lg text-gray-300">

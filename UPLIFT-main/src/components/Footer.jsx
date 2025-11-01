@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { ArrowUpRight } from 'lucide-react';
+// UPDATED: Import icons
+import { ArrowUpRight, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 // Helper function for smooth scrolling (re-used from Navigation)
 const scrollToSection = (id) => {
@@ -14,7 +15,6 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-black py-20 px-8 border-t border-gray-800">
-      {/* MODIFIED: Violet glowing effect from the top center */}
       <div 
         className="absolute inset-0" 
         style={{ 
@@ -25,13 +25,10 @@ export default function Footer() {
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
         {/* Column 1: Logo & Newsletter */}
         <div className="flex-1 space-y-6 md:max-w-md">
-          {/* Using your logo here for consistency */}
           <img src="/logo.png" alt="Uplift Advertising" className="h-12 w-auto" />
-          
           <p className="text-gray-400 text-lg">
             Uplift Advertising Agency – Automate Smarter, Optimize Faster, and Grow Stronger.
           </p>
-          
           <p className="text-gray-300 font-medium pt-4">Join our newsletter</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <input 
@@ -109,45 +106,26 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 4: Socials (Bottom buttons removed) */}
-        <div className="flex-grow"> {/* Removed flex-col and justify-between as buttons are gone */}
+        {/* Column 4: Socials (UPDATED) */}
+        <div className="flex-grow">
           <div>
             <h3 className="text-lg font-semibold mb-6">Socials</h3>
-            <ul className="space-y-4">
-              <li>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  Linkedin
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  Twitter
-                </a>
-              </li>
-            </ul>
+            {/* UPDATED: Changed to a flex row of icons */}
+            <div className="flex items-center gap-5">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Twitter className="w-6 h-6" />
+              </a>
+            </div>
           </div>
-
-          {/* Bottom Right Buttons - REMOVED */}
-          {/* <div className="flex flex-col gap-4 mt-8 md:mt-0 w-full md:w-auto">
-            <button className="group bg-violet-600 hover:bg-violet-700 px-6 py-3 rounded-md font-medium transition-colors flex items-center justify-center md:justify-end gap-2 text-white">
-              Use For Free
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-            <button className="group bg-transparent border border-gray-700 hover:border-gray-600 px-6 py-3 rounded-md font-medium transition-colors flex items-center justify-center md:justify-end gap-2 text-gray-300">
-              Another AI Template
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-          </div> */}
         </div>
       </div>
 

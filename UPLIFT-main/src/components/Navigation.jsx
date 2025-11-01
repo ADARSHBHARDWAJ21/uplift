@@ -3,10 +3,11 @@ import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', href: '#home' },
-  { name: 'About Us', href: '#about' }, // Targeting the 'About Us' section (assuming it's near 'WhyContent')
+  { name: 'About Us', href: '#about' },
   { name: 'Services & Packages', href: '#services' },
   { name: 'Our Work', href: '#results' },
-  { name: 'Contact Us', href: '#contact' },
+  // UPDATED: Changed href from '#contact' to '#cta'
+  { name: 'Contact Us', href: '#cta' },
 ];
 
 // Helper function for smooth scrolling
@@ -35,7 +36,6 @@ export default function Navigation() {
   }, [isOpen]);
 
   return (
-    // UPDATED: Changed max-w-7xl to max-w-screen-xl to widen the container
     <nav className="relative z-20 flex items-center justify-between px-8 py-6 max-w-screen-xl mx-auto">
       {/* Logo Area (Left) */}
       <div className="flex items-center gap-2">
@@ -56,12 +56,6 @@ export default function Navigation() {
             {item.name}
           </a>
         ))}
-        <button 
-          onClick={(e) => handleNavClick(e, '#contact')}
-          className="bg-indigo-600 hover:bg-indigo-700 px-6 py-2 rounded-md text-sm font-medium transition-colors shadow-lg shadow-indigo-500/30"
-        >
-          Let's Work Together
-        </button>
       </div>
       
       {/* Mobile Menu Button (Right) */}
@@ -90,12 +84,6 @@ export default function Navigation() {
               {item.name}
             </a>
           ))}
-          <button 
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="mt-8 bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-md text-lg font-medium transition-colors shadow-xl shadow-indigo-500/40"
-          >
-            Let's Work Together
-          </button>
         </div>
       </div>
     </nav>
