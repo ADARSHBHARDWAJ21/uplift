@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import profileGrowthImage from '../assets/profile-growth.jpg';
-import brandStorytellingImage from '../assets/brand-storytelling.jpg';
-// ... (features array remains the same)
+
+// UPDATED: Import the new images from the assets folder
+import profileGrowthImage from '../assets/ChatGPT Image Nov 8, 2025, 10_34_02 AM.png';
+import brandStorytellingImage from '../assets/ChatGPT Image Nov 8, 2025, 10_34_09 AM.png';
+import paidAdvertisingImage from '../assets/ChatGPT Image Nov 8, 2025, 10_34_12 AM.png';
+import digitalStorefrontImage from '../assets/ChatGPT Image Nov 8, 2025, 10_34_15 AM.png';
+
+// UPDATED: The features array now uses the imported image variables
 const features = [
   {
     badge: 'Profile Growth',
@@ -10,7 +15,7 @@ const features = [
     description:
       'We help you streamline your social presence by automating posting, monitoring, and basic engagement, freeing you up to focus on strategy.',
     links: ['Engagement', 'Scheduling', 'Reporting'],
-    imageUrl: 'profile-growth.jpg',
+    imageUrl: profileGrowthImage, // <-- Updated
     imageSide: 'right',
   },
   {
@@ -19,7 +24,7 @@ const features = [
     description:
       'Stop worrying about "what to post". We handle the full content lifecycle, from video ideation and shooting to graphic design and copywriting, all aligned with your brand voice.',
     links: ['Video Production', 'Graphic Design', 'Copywriting'],
-    imageUrl: 'https://source.unsplash.com/500x350/?video,content,editing',
+    imageUrl: brandStorytellingImage, // <-- Updated
     imageSide: 'left',
   },
   {
@@ -28,7 +33,7 @@ const features = [
     description:
       'Attract high-quality leads with targeted Google & Meta ad campaigns. We analyze data to find your customers, optimize your ad spend, and maximize your return on investment.',
     links: ['Lead Gen', 'ROAS', 'Targeting'],
-    imageUrl: 'https://source.unsplash.com/500x350/?dashboard,chart,data',
+    imageUrl: paidAdvertisingImage, // <-- Updated
     imageSide: 'right',
   },
   {
@@ -37,7 +42,7 @@ const features = [
     description:
       'Your website is your 24/7 salesperson. We build fast, professional, and mobile-responsive websites that not only look great but are also optimized for search engines (SEO) to attract organic traffic.',
     links: ['Websites', 'E-commerce', 'SEO'],
-    imageUrl: 'https://source.unsplash.com/500x350/?website,design,code',
+    imageUrl: digitalStorefrontImage, // <-- Updated
     imageSide: 'left',
   },
 ];
