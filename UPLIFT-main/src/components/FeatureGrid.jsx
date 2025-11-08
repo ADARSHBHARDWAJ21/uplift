@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-
+import profileGrowthImage from '../assets/profile-growth.jpg';
+import brandStorytellingImage from '../assets/brand-storytelling.jpg';
 // ... (features array remains the same)
 const features = [
   {
@@ -9,7 +10,7 @@ const features = [
     description:
       'We help you streamline your social presence by automating posting, monitoring, and basic engagement, freeing you up to focus on strategy.',
     links: ['Engagement', 'Scheduling', 'Reporting'],
-    imageUrl: 'https://source.unsplash.com/500x350/?social,media,analytics',
+    imageUrl: 'profile-growth.jpg',
     imageSide: 'right',
   },
   {
